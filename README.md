@@ -90,7 +90,7 @@ We design a slice alignment scheme that incorporates both rigid registration and
 ---
 
 ### 🔹 3. Implicit Neural Representation (INR)–Based 3D Reconstruction  
-To achieve isotropic reconstruction, we treat the 3D volume as a continuous function and use implicit neural representations to predict voxel intensities via positional encoding. This allows arbitrary-resolution axial interpolation while preserving structural continuity. Due to limited isotropic datasets, we generate training data through controlled degradation, producing paired low-/high-resolution volumes for self-supervised learning.
+To achieve isotropic reconstruction, we propose **vEMINR**, a fast self-supervised isotropic reconstruction framework that uses high-resolution XY slices as supervision to guide the recovery of missing axial information. A lightweight MLP learns continuous implicit representations of real vEM textures, enabling accurate decoding of low-resolution axial signals into the high-resolution space at any coordinate without costly image-generation steps.  
 
 <p align="center">
   <img src="Figure/iso.png" width="80%">
