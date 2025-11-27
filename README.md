@@ -21,35 +21,84 @@ This project aims to develop an AI-driven system that covers the *entire* VEM pr
 
 ---
 
-## 🎯 项目目标
+## 🎯 Goals and Objectives
 
-本工具包致力于实现以下核心能力：
+Despite substantial progress in VEM methodologies, several key challenges remain unresolved:
 
-### 1️⃣ 高精度 2D 拼接  
-- 自动处理大规模连续切片  
-- 支持刚体 + 局部弹性变换  
-- 来自 GigaScience 论文 **vEMstitch** 的工程实现
+1. Accurately matching image features within complex biological structures while modeling both global rigidity and local elastic deformation for precise stitching.  
+2. Preserving Z-axis structural coherence, restoring damaged slices faithfully, and distinguishing natural biological deformation from nonlinear imaging artifacts.  
+3. Achieving isotropic 3D reconstruction at arbitrary resolutions through implicit neural representations.  
+4. Leveraging minimal prompt information with large pre-trained models to enable accurate segmentation of diverse biological structures.
 
-### 2️⃣ 3D 切片对齐 / 注册  
-- 基于高斯滤波的鲁棒 3D 注册（AAAI 2025）  
-- 基于 **Neural ODE** 的自监督连续轨迹优化注册（NeurIPS 2025）  
+To address these challenges, the following objectives are defined:
 
-### 3️⃣ 切片损坏修复  
-- 通过 **轴向光流（Axial Optical Flow）** 获取前后切片结构  
-- 自动修复撕裂、缺失、污染区域  
-- 来自 ACM Multimedia 2024 的方法实现
+### 🔹 Objective 1: High-Precision Image Stitching
+Develop a stitching framework capable of handling both global rigid alignment and local elastic deformation, enabling accurate feature matching and producing seamless, high-resolution panoramic slices.
 
-### 4️⃣ 基于隐式神经表示（INR）的 3D 重建  
-- 对任意分辨率的数据进行重建  
-- 自监督学习，不依赖真实 3D GT  
-- 支持不同厚度的切片数据（异方差输入）
+### 🔹 Objective 2: Accurate 3D Alignment
+Design a 3D alignment method that incorporates slice-damage repair using axial structural continuity. Axial optical flow will capture Z-axis structural changes, while learned deformation fields correct nonlinear distortions to restore natural biological geometry.
 
-### 5️⃣ 3D 结构分割大模型  
-- 使用标注稀缺条件下的提示式交互  
-- 大规模预训练模型适配 EM 数据  
-- 支持多器官、多结构泛化
+### 🔹 Objective 3: Self-Supervised 3D Reconstruction
+Introduce a self-supervised reconstruction approach based on implicit neural representations to generate high-fidelity, isotropic 3D volumes at multiple resolutions using continuous positional encoding and artifact-free interpolation.
+
+### 🔹 Objective 4: Efficient 3D Structure Segmentation
+Develop a large pre-trained model for VEM segmentation, enabling zero-shot transfer and interactive prompt-based refinement to accurately segment diverse organelles and complex cellular structures with minimal manual annotation.
+
+**In summary**, these objectives aim to overcome key barriers in VEM processing, advancing high-resolution 3D reconstruction and unlocking deeper insights into complex biological systems for health and life science research.
 
 ---
 
-## 🧩 系统结构
+## 📚 Existing Methods & Publications
 
+Below lists our existing research contributions corresponding to each step of the VEM pipeline, including **paper links** and **open-source code (if available)**.
+
+---
+
+### 🔹 1. 2D Image Stitching  
+**vEMstitch: Fully Automatic Image Stitching for VEM**  
+- 📄 Paper (GigaScience 2024):  
+  https://doi.org/10.1093/gigascience/giae076  
+- 💻 Code:  
+  https://github.com/DeepImagingLab/vEMstitch
+
+---
+
+### 🔹 2. 3D Slice Alignment / Registration
+
+#### (a) Gaussian Filter–Based 3D Registration  
+- 📄 Paper (AAAI 2025):  
+  Zhenbang Zhang, Hongjia Li, Zhiqiang Xu, Wenjia Meng*, Renmin Han*.  
+  *A Gaussian filter-based 3D registration method for serial section EM.*  
+- 💻 Code: *(to be released)*
+
+#### (b) Neural ODE–based Self-Supervised 3D Registration  
+- 📄 Paper (NeurIPS 2025):  
+  Zhenbang Zhang, Jingtong Feng, Hongjia Li, Haythem El-Messiry, Zhiqiang Xu*, Renmin Han*.  
+  *Unsupervised Trajectory Optimization for 3D Registration in Serial Section EM using Neural ODEs.*  
+- 💻 Code: *(to be released)*
+
+---
+
+### 🔹 3. Slice Damage Restoration / Axial Inpainting  
+- 📄 Paper (ACM Multimedia 2024):  
+  Yiran Cheng, Bintao He, Fa Zhang, Renmin Han*.  
+  *Serial section microscopy image inpainting guided by axial optical flow.*  
+  https://doi.org/10.1145/XXXX.XXXX  *(replace with final DOI when available)*  
+- 💻 Code: *(to be released)*
+
+---
+
+### 🔹 4. Implicit Neural Representation (INR) for 3D Reconstruction  
+- Method integrated in this project (self-supervised, anisotropy-aware).  
+- 📄 Related works:  
+  (Provide once you have the official preprint / publication)  
+- 💻 Code: *(to be released)*
+
+---
+
+### 🔹 5. 3D Structural Segmentation with Large Models  
+- Large pretrained model + promptable segmentation  
+- 📄 Related research from team (examples):  
+  - Deep representation learning, contrastive learning, segmentation foundations  
+  - (You may insert specific papers later if desired)
+- 💻 Code: *(to be released)*
