@@ -1,23 +1,23 @@
-# 🔬 vEMScope: 高精度体视电镜（VEM）三维重建与分割系统
+# 🔬 Towards High-Resolution 3D Reconstruction in Volume Electron Microscopy
 
-本项目旨在构建一个 **全流程的体视电镜（Volume Electron Microscopy，VEM）图像处理平台**，用于实现高分辨率、大规模生物三维结构的自动化拼接、对齐、修复、重建与分割。  
-项目基于团队在 NeurIPS、AAAI、ACM MM、GigaScience 等顶会顶刊中的系列研究成果，力图打造一个 **可复现、可扩展、可交互** 的 VEM 处理工具包。
+The project aims to build a **full-pipeline image processing platform for Volume Electron Microscopy (VEM)**，enabling automated stitching, alignment, restoration, reconstruction, and segmentation of high-resolution, large-scale biological 3D structures.
+Built upon the team’s series of research contributions published in top-tier venues such as **NeurIPS, AAAI, ACM Multimedia, and GigaScience**，this project seeks to deliver a **reproducible, extensible, and interactive** VEM processing toolkit.
 
 ---
 
-## 📌 项目背景
+## 📌 Background
 
-体视电镜（VEM）是被 Nature 列为 *“2023 年值得关注的七大技术之一”* 的革命性生物成像技术，可在纳米级分辨率下观察细胞、组织甚至小型生物的三维结构。
+Volume Electron Microscopy (VEM) is a revolutionary biological imaging technology, recognized by *Nature* as one of the **“Seven Technologies to Watch in 2023”**. It enables nanoscale-resolution visualization of the three-dimensional structures of cells, tissues, and even small organisms.
 
-然而，VEM 数据处理链路复杂，包括：
+However, the VEM data processing workflow is highly complex and typically involves the following stages:
 
-1. **2D 图像拼接（Stitching）**  
-2. **3D 序列对齐 / 注册（Alignment / Registration）**  
-3. **切片损伤修复与插帧（Inpainting / Axial Interpolation）**  
-4. **三维各向同性重建（Isotropic Reconstruction）**  
-5. **三维结构分割（3D Segmentation）**
+1. **2D Image Stitching**  
+2. **3D Slice Alignment / Registration**  
+3. **Slice Damage Restoration & Axial Interpolation (Inpainting / Axial Flow)**  
+4. **Isotropic 3D Reconstruction**  
+5. **3D Structural Segmentation**
 
-本项目旨在开发一个覆盖以上所有环节的 AI 系统，使科研人员可高效完成从**原始切片 → 三维结构 → 生物分析**的完整流程。
+This project aims to develop an AI-driven system that covers the *entire* VEM processing pipeline, enabling researchers to efficiently complete the full workflow from **raw slices → 3D volume reconstruction → biological analysis**.
 
 ---
 
