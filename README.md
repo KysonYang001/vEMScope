@@ -48,57 +48,62 @@ Develop a large pre-trained model for VEM segmentation, enabling zero-shot trans
 
 ---
 
-## 📚 Existing Methods & Publications
+## 🛠️ Technical Approach & Methodology
 
-Below lists our existing research contributions corresponding to each step of the VEM pipeline, including **paper links** and **open-source code (if available)**.
-
----
-
-### 🔹 1. 2D Image Stitching  
-**vEMstitch: Fully Automatic Image Stitching for VEM**  
-- 📄 Paper (GigaScience 2024):  
-  https://doi.org/10.1093/gigascience/giae076  
-- 💻 Code:  
-  https://github.com/DeepImagingLab/vEMstitch
+To accomplish the goals and objectives, this project adopts a four-part technical framework covering stitching, alignment, reconstruction, and segmentation.
 
 ---
 
-### 🔹 2. 3D Slice Alignment / Registration
+### 🔹 1. Feature-Based 2D Image Stitching  
+We implement a stitching pipeline that extracts scale-invariant feature points, matches feature pairs, and jointly models global rigid transformations and local elastic deformations. This enables seamless, high-resolution slice panoramas even under slight rotations or nonlinear distortions. The process includes determining stitching order, feature extraction, feature matching, global rigid estimation, local elastic correction, and image fusion.
 
-#### (a) Gaussian Filter–Based 3D Registration  
-- 📄 Paper (AAAI 2025):  
-  Zhenbang Zhang, Hongjia Li, Zhiqiang Xu, Wenjia Meng*, Renmin Han*.  
-  *A Gaussian filter-based 3D registration method for serial section EM.*  
-- 💻 Code: *(to be released)*
+<p align="center">
+  <img src="Figure/stitching.png" width="80%">
+</p>
 
-#### (b) Neural ODE–based Self-Supervised 3D Registration  
-- 📄 Paper (NeurIPS 2025):  
-  Zhenbang Zhang, Jingtong Feng, Hongjia Li, Haythem El-Messiry, Zhiqiang Xu*, Renmin Han*.  
-  *Unsupervised Trajectory Optimization for 3D Registration in Serial Section EM using Neural ODEs.*  
-- 💻 Code: *(to be released)*
+- 📄 Paper: [vEMstitch: an algorithm for fully automatic image stitching of volume electron microscopy](https://doi.org/10.1093/gigascience/giae076), **GigaScience 2024**  
+   
+- 💻 Code: https://github.com/HeracleBT/vEMstitch
 
 ---
 
-### 🔹 3. Slice Damage Restoration / Axial Inpainting  
-- 📄 Paper (ACM Multimedia 2024):  
-  Yiran Cheng, Bintao He, Fa Zhang, Renmin Han*.  
-  *Serial section microscopy image inpainting guided by axial optical flow.*  
-  https://doi.org/10.1145/XXXX.XXXX  *(replace with final DOI when available)*  
-- 💻 Code: *(to be released)*
+### 🔹 2. Image Alignment with Integrated Slice Restoration  
+We design a slice alignment scheme that incorporates both rigid registration and damage restoration. Edge feature points guide reliable rigid alignment, while axial optical flow captures Z-axis structural continuity to restore corrupted slices. A recurrent neural network is then applied to the entire sequence to correct long-range nonlinear deformation and cumulative errors. This ensures faithful structural coherence and high-quality 3D alignment.
+
+<p align="center">
+  <img src="Figure/aligment.png" width="80%">
+</p>
+
+
+- 📄 Paper: [Unsupervised Trajectory Optimization for 3D Registration in Serial Section Electron Microscopy using Neural ODEs](https://neurips.cc/virtual/2025/loc/san-diego/poster/120149), **NeurIPS 2025**  
+   
+- 💻 Code: 
+
+- 📄 Paper: [A Gaussian Filter-Based 3D Registration Method for Series Section Electron Microscopy](https://doi.org/10.1609/aaai.v39i1.32103), **AAAI 2025**  
+   
+- 💻 Code: 
+
+- 📄 Paper: [Serial Section Microscopy Image Inpainting Guided by Axial Optical Flow](https://dl.acm.org/doi/abs/10.1145/3664647.3681023), **ACM Multimedia 2024**  
+   
+- 💻 Code: 
 
 ---
 
-### 🔹 4. Implicit Neural Representation (INR) for 3D Reconstruction  
-- Method integrated in this project (self-supervised, anisotropy-aware).  
-- 📄 Related works:  
-  (Provide once you have the official preprint / publication)  
-- 💻 Code: *(to be released)*
+### 🔹 3. Implicit Neural Representation (INR)–Based 3D Reconstruction  
+To achieve isotropic reconstruction, we treat the 3D volume as a continuous function and use implicit neural representations to predict voxel intensities via positional encoding. This allows arbitrary-resolution axial interpolation while preserving structural continuity. Due to limited isotropic datasets, we generate training data through controlled degradation, producing paired low-/high-resolution volumes for self-supervised learning.
+
+<p align="center">
+  <img src="Figure/iso.png" width="80%">
+</p>
+
+💻 Code: https://github.com/KysonYang001/vEMINR
 
 ---
 
-### 🔹 5. 3D Structural Segmentation with Large Models  
-- Large pretrained model + promptable segmentation  
-- 📄 Related research from team (examples):  
-  - Deep representation learning, contrastive learning, segmentation foundations  
-  - (You may insert specific papers later if desired)
-- 💻 Code: *(to be released)*
+### 🔹 4. Interactive Large Model for 3D Volume Segmentation  
+We aim to build a large pretrained segmentation model for VEM data, leveraging the growing EMDB database. Through prompt-based interaction and minimal transfer learning, experts can efficiently guide the model to segment diverse organelles and cellular structures. This approach improves annotation efficiency and supports broad generalization across imaging modalities and targets.
+
+<p align="center">
+  <img src="Figure/seg.png" width="80%">
+</p>
+
