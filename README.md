@@ -76,16 +76,12 @@ We design a slice alignment scheme that incorporates both rigid registration and
 
 
 - 📄 Paper: [Unsupervised Trajectory Optimization for 3D Registration in Serial Section Electron Microscopy using Neural ODEs](https://neurips.cc/virtual/2025/loc/san-diego/poster/120149), **NeurIPS 2025**  
-   
-- 💻 Code: 
 
 - 📄 Paper: [A Gaussian Filter-Based 3D Registration Method for Series Section Electron Microscopy](https://doi.org/10.1609/aaai.v39i1.32103), **AAAI 2025**  
-   
-- 💻 Code: 
 
 - 📄 Paper: [Serial Section Microscopy Image Inpainting Guided by Axial Optical Flow](https://dl.acm.org/doi/abs/10.1145/3664647.3681023), **ACM Multimedia 2024**  
    
-- 💻 Code: 
+- 💻 Code: https://github.com/chengyr1999/FlowInpaint/
 
 ---
 
